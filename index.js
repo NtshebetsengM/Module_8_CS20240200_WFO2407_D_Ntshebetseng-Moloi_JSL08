@@ -1,9 +1,39 @@
 // This one will be a little tricky. So check out this overview first: https://www.youtube.com/watch?v=sJ-c3BA-Ypo
 
 // 1. Create a variable to store the singleton instance of the bank branch. "bankBranchInstance"
-
+let bankBranchInstance = null
 // 2. Define a class called `BankBranch` for managing branch information.
+class BankBranch {
+    constructor(branchInfo){
+if(bankBranchInstance == null){
+    this.branchInfo = branchInfo;
+    this.customers = [];
+    bankBranchInstance.instance = this;
+}
+return bankBranchInstance;
+    }
+    getBranchInfo() {
+        return this.branchInfo;
+    } 
+    addCustomerByName(name) {
+        const customer = {
+            id: Date.now(),  // generate current timestamp to use as ID
+            name: name
+        };
+        this.customers.push(customer);  // Add the customer to the branch's list
+        console.log(`Customer ${name} added with ID ${customer.id}.`);
+    }
+}
 
+const branchA = new BankBranch("Sandton");
+branchA.addCustomerByName("Sabi");
+console.log(branchA.getBranchInfo())
+
+const branchB = new BankBranch("randburg")
+branchB.addCustomerByName("Hlumi")
+console.log(branchB.getBranchInfo())
+
+console.log(branchA === branchB);
 // 3. In the `BankBranch` class:
 //    - Create a constructor that takes `branchInfo` as a parameter.
 //    - Inside the constructor, check if the `bankBranchInstance` variable is null (indicating no instance exists).
