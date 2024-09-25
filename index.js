@@ -6,9 +6,9 @@ let bankBranchInstance = null
 class BankBranch {
     constructor(branchInfo){
 if(bankBranchInstance == null){
-    this.branchInfo = branchInfo;
-    this.customers = [];
-    bankBranchInstance.instance = this;
+    this.branchInfo = branchInfo
+    this.customers = []
+    bankBranchInstance = this
 }
 return bankBranchInstance;
     }
@@ -21,19 +21,19 @@ return bankBranchInstance;
             name: name
         };
         this.customers.push(customer);  // Add the customer to the branch's list
-        console.log(`Customer ${name} added with ID ${customer.id}.`);
+        console.log(`Customer ${name} added with ID ${customer.id}.`)
     }
 }
 
-const branchA = new BankBranch("Sandton");
-branchA.addCustomerByName("Sabi");
+const branchA = new BankBranch("Sandton")
+branchA.addCustomerByName("Sabi")
 console.log(branchA.getBranchInfo())
 
 const branchB = new BankBranch("randburg")
 branchB.addCustomerByName("Hlumi")
 console.log(branchB.getBranchInfo())
 
-console.log(branchA === branchB);
+console.log(branchA === branchB)
 // 3. In the `BankBranch` class:
 //    - Create a constructor that takes `branchInfo` as a parameter.
 //    - Inside the constructor, check if the `bankBranchInstance` variable is null (indicating no instance exists).
